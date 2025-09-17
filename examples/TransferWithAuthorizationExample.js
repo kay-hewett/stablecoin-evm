@@ -189,17 +189,22 @@ async function createTransferAuthorization(
  */
 async function gasStationExample() {
   // Configuration
-  const USDC_CONTRACT_ADDRESS = "0xA0b86a33E6441E6aB5b3e1b0D2FB3d8CE0A3A11B"; // Example address
-  const provider = new ethers.providers.JsonRpcProvider("YOUR_RPC_URL");
+  const USDC_CONTRACT_ADDRESS = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238"; // Sepolia USDC
+  const provider = new ethers.providers.JsonRpcProvider(
+    "https://eth-sepolia.g.alchemy.com/v2/demo"
+  );
 
   // Wallets
   const tokenHolderWallet = new ethers.Wallet(
-    "TOKEN_HOLDER_PRIVATE_KEY",
+    "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
     provider
   ); // User with USDC
-  const recipientWallet = new ethers.Wallet("RECIPIENT_PRIVATE_KEY", provider); // Transfer recipient
+  const recipientWallet = new ethers.Wallet(
+    "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d",
+    provider
+  ); // Transfer recipient
   const gasStationWallet = new ethers.Wallet(
-    "GAS_STATION_PRIVATE_KEY",
+    "0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a",
     provider
   ); // Pays gas fees
 
@@ -255,13 +260,24 @@ async function gasStationExample() {
  */
 async function scheduledTransferExample() {
   // Configuration
-  const USDC_CONTRACT_ADDRESS = "0xA0b86a33E6441E6aB5b3e1b0D2FB3d8CE0A3A11B";
-  const provider = new ethers.providers.JsonRpcProvider("YOUR_RPC_URL");
+  const USDC_CONTRACT_ADDRESS = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";
+  const provider = new ethers.providers.JsonRpcProvider(
+    "https://eth-sepolia.g.alchemy.com/v2/demo"
+  );
 
   // Wallets
-  const senderWallet = new ethers.Wallet("SENDER_PRIVATE_KEY", provider);
-  const recipientWallet = new ethers.Wallet("RECIPIENT_PRIVATE_KEY", provider);
-  const executorWallet = new ethers.Wallet("EXECUTOR_PRIVATE_KEY", provider);
+  const senderWallet = new ethers.Wallet(
+    "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
+    provider
+  );
+  const recipientWallet = new ethers.Wallet(
+    "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d",
+    provider
+  );
+  const executorWallet = new ethers.Wallet(
+    "0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a",
+    provider
+  );
 
   try {
     const sender = new FiatTokenSender(
