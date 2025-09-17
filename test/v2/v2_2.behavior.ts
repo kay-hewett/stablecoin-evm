@@ -58,7 +58,7 @@ export function behavesLikeFiatTokenV22(
     domainSeparator = makeDomainSeparator(
       "USDC",
       "2",
-      await web3.eth.getChainId(),
+      Number(await web3.eth.getChainId()),
       fiatToken.address
     );
   });

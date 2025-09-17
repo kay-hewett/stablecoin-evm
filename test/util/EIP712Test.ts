@@ -32,7 +32,7 @@ describe("EIP712", () => {
 
   beforeEach(async () => {
     eip712 = await EIP712Test.new();
-    chainId = await web3.eth.getChainId();
+    chainId = Number(await web3.eth.getChainId());
 
     randomName = sampleSize(wordlist, 3).join(" ");
     randomVersion = (Math.floor(Math.random() * 10) + 1).toString();

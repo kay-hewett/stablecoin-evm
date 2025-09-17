@@ -4,13 +4,9 @@
  */
 
 const { ethers } = require("ethers");
-const { Web3 } = require("web3");
 
 // Load configuration
 const config = require("./config.js");
-
-// Initialize web3 instance
-const web3 = new Web3();
 
 // USDC Contract ABI
 const FIAT_TOKEN_ABI = [
@@ -20,15 +16,6 @@ const FIAT_TOKEN_ABI = [
   "function authorizationState(address authorizer, bytes32 nonce) view returns (bool)",
   "function DOMAIN_SEPARATOR() view returns (bytes32)",
 ];
-
-// Type hash from the contract
-const transferWithAuthorizationTypeHash = web3.utils.keccak256(
-  "TransferWithAuthorization(address from,address to,uint256 value,uint256 validAfter,uint256 validBefore,bytes32 nonce)"
-);
-
-function strip0x(input) {
-  return input.startsWith("0x") ? input.slice(2) : input;
-}
 
 /**
  * Create the correct signature format for ECRecover.recover()
